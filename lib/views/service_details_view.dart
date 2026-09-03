@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/widget_service_details.dart/about_service_section.dart';
-import '../widgets/widget_service_details.dart/provider_card.dart';
-import '../widgets/widget_service_details.dart/service_bottom_bar.dart';
-import '../widgets/widget_service_details.dart/service_details_app_bar.dart';
-import '../widgets/widget_service_details.dart/service_main_card.dart';
-import '../widgets/widget_service_details.dart/whats_included_section.dart';
+import '../widgets/widget_service_details/about_service_section.dart';
+import '../widgets/widget_service_details/provider_card.dart';
+import '../widgets/widget_service_details/service_bottom_bar.dart';
+import '../widgets/widget_service_details/service_details_app_bar.dart';
+import '../widgets/widget_service_details/service_main_card.dart';
+import '../widgets/widget_service_details/whats_included_section.dart';
 
 class ServiceDetailsView extends StatelessWidget {
   const ServiceDetailsView({super.key});

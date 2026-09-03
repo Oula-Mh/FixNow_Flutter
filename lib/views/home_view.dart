@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_text_field.dart';
 import '../widgets/widgets_home/categories_section.dart';
-import '../widgets/widgets_home/custom_home_app_bar.dart.dart';
+import '../widgets/widgets_home/home_app_bar.dart';
 import '../widgets/widgets_home/location.dart';
 import '../widgets/widgets_home/need_help_card.dart';
 import '../widgets/widgets_home/popular_services_section.dart';
+import '../widgets/widgets_home/search_trigger_card.dart';
+import 'search_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,7 +14,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomHomeAppBar(),
+      appBar: const HomeAppBar(),
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
@@ -23,11 +24,15 @@ class HomeView extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            CustomTextField(
+            SearchTriggerCard(
               hintText: 'What service do you need?',
-              prefixIcon: Icons.search,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SearchView()),
+                );
+              },
             ),
-
             const SizedBox(height: 24),
 
             NeedHelpCard(),

@@ -27,7 +27,6 @@ class ServiceBottomBar extends StatelessWidget {
                     fontFamily: 'Inter',
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade600,
                   ),
                 ),
                 Text(

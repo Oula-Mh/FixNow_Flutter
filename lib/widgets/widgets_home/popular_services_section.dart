@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/service_model.dart';
 import '../../views/service_details_view.dart';
-import 'service_card.dart';
+import 'popular_service_card.dart';
 
 class PopularServicesSection extends StatelessWidget {
   const PopularServicesSection({super.key});
@@ -24,12 +24,17 @@ class PopularServicesSection extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               final service = ServiceModel.dummyServices[index];
-              return ServiceCard(service: service,onTap: (){
-                Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ServiceDetailsView()),
-        );
-              },);
+              return PopularServiceCard(
+                service: service,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ServiceDetailsView(),
+                    ),
+                  );
+                },
+              );
             },
           ),
         ),

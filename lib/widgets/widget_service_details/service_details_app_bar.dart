@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ServiceDetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ServiceDetailsAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const ServiceDetailsAppBar({super.key});
 
   @override
@@ -8,10 +9,6 @@ class ServiceDetailsAppBar extends StatelessWidget implements PreferredSizeWidge
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () => Navigator.of(context).maybePop(),
-      ),
       centerTitle: true,
       title: Text(
         'FixNow',
@@ -24,7 +21,7 @@ class ServiceDetailsAppBar extends StatelessWidget implements PreferredSizeWidge
       ),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
-        child: Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
+        child: Divider(height: 1, thickness: 1, color: Color(0xffBDC9C9)),
       ),
     );
   }

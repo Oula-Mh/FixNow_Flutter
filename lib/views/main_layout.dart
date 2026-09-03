@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'favorites_view.dart';
 import 'home_view.dart';
 
 class MainLayout extends StatefulWidget {
@@ -14,7 +15,7 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _pages = [
     const HomeView(),
     const Scaffold(body: Center(child: Text('Cart View'))),
-    const Scaffold(body: Center(child: Text('Favorites View'))),
+    const FavoritesView(),
     const Scaffold(body: Center(child: Text('Profile View'))),
   ];
 
