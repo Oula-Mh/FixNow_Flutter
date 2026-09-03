@@ -1,3 +1,4 @@
+import 'package:fixnow/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -117,6 +118,12 @@ class _OnboardingViewState extends State<OnboardingView> {
                 child: FilledButton(
                   onPressed: () {
                     if (isLastPage) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginView(),
+                        ),
+                      );
                     } else {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 300),
@@ -133,7 +140,6 @@ class _OnboardingViewState extends State<OnboardingView> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
             ],
           ),
         ),
