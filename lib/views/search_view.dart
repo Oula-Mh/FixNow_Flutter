@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/service_model.dart';
 import '../widgets/widget_search/search_app_bar.dart';
 import '../widgets/service_card.dart';
+import 'booking_confirmation_view.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -40,7 +41,10 @@ class _SearchViewState extends State<SearchView> {
           return ServiceCard(
             service: service,
             onBookTap: () {
-
+ Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const BookingConfirmationView()),
+        );
             },
             onFavoriteToggle: (isFav) {
 

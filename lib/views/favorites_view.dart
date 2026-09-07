@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/service_model.dart';
 import '../widgets/custom_main_app_bar.dart';
 import '../widgets/service_card.dart';
+import 'booking_confirmation_view.dart';
 
 class FavoritesView extends StatefulWidget {
   const FavoritesView({super.key});
@@ -71,7 +72,10 @@ class _FavoritesViewState extends State<FavoritesView> {
                 return ServiceCard(
                   service: service,
                   onBookTap: () {
-
+ Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const BookingConfirmationView()),
+        );
                   },
                   onFavoriteToggle: (isFav) {
 

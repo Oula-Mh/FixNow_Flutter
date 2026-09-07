@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_view.dart';
+import 'cart_view.dart';
 import 'favorites_view.dart';
 import 'home_view.dart';
 
@@ -14,9 +16,9 @@ class _MainLayoutState extends State<MainLayout> {
 
   final List<Widget> _pages = [
     const HomeView(),
-    const Scaffold(body: Center(child: Text('Cart View'))),
+    const CartView(),
     const FavoritesView(),
-    const Scaffold(body: Center(child: Text('Profile View'))),
+    const ProfileView(),
   ];
 
   @override
