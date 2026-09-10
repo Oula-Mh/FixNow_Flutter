@@ -1,17 +1,23 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:icons_plus/icons_plus.dart';
+
+import '../core/providers/app_session_provider.dart';
+import '../models/login_model.dart';
 import '../widgets/custom_text_button.dart';
 import '../widgets/custom_text_field.dart';
 import 'main_layout.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -27,8 +33,33 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).colorScheme.primary;
 
+    final authState = ref.watch(appSessionProvider);
+    final isLoading = authState.isLoading;
+
+    ref.listen<AsyncValue<AuthStatus>>(appSessionProvider, (previous, next) {
+      next.whenOrNull(
+        data: (status) {
+          if (status == AuthStatus.authenticated) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const MainLayout(),
+              ),
+            );
+          }
+        },
+        error: (error, stackTrace) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(error.toString()),
+              backgroundColor: Theme.of(context).colorScheme.error,
+            ),
+          );
+        },
+      );
+    });
+
     return Scaffold(
-      // backgroundColor: const Color(0xFFF9F9F8),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -65,36 +96,29 @@ class _LoginViewState extends State<LoginView> {
                         size: 32,
                       ),
                     ),
-
                     const SizedBox(height: 20),
-
                     Text(
                       'Welcome back',
                       textAlign: TextAlign.center,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.headlineLarge?.copyWith(fontSize: 32),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge
+                          ?.copyWith(fontSize: 32),
                     ),
-
                     const SizedBox(height: 8),
-
                     Text(
                       "Let's get your next job sorted.",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
-
                     const SizedBox(height: 32),
-
                     CustomTextField(
                       label: 'Email Address',
                       hintText: 'contractor@example.com',
                       prefixIcon: Icons.email_outlined,
                       controller: _emailController,
                     ),
-
                     const SizedBox(height: 20),
-
                     CustomTextField(
                       label: 'Password',
                       hintText: '••••••••',
@@ -102,42 +126,52 @@ class _LoginViewState extends State<LoginView> {
                       isPassword: true,
                       controller: _passwordController,
                     ),
-
                     const SizedBox(height: 12),
-
-                    Align(
+                    const Align(
                       alignment: Alignment.centerRight,
-                      child:CustomTextButton(text:"Forgot password?")
-
+                      child: CustomTextButton(text: "Forgot password?"),
                     ),
-
                     const SizedBox(height: 24),
-
                     SizedBox(
                       width: double.infinity,
                       height: 50,
                       child: FilledButton(
-                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const MainLayout(),
-                            ),
-                          );
-                        },
-                        child:  Text(
-                          'Login',
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                        ),
+                        onPressed: isLoading
+                            ? null
+                            : () {
+                                if (_formKey.currentState!.validate()) {
+                                  FocusScope.of(context).unfocus();
+                                  final model = LoginModel(
+                                    email: _emailController.text.trim(),
+                                    password: _passwordController.text,
+                                  );
+                                  ref
+                                      .read(appSessionProvider.notifier)
+                                      .login(model);
+                                }
+                              },
+                        child: isLoading
+                            ? const SizedBox(
+                                height: 24,
+                                width: 24,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                  strokeWidth: 2.5,
+                                ),
+                              )
+                            : Text(
+                                'Login',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                              ),
                       ),
                     ),
-
                     const SizedBox(height: 28),
-
                     Row(
                       children: [
                         Expanded(child: Divider(color: Colors.grey.shade300)),
@@ -156,11 +190,9 @@ class _LoginViewState extends State<LoginView> {
                         Expanded(child: Divider(color: Colors.grey.shade300)),
                       ],
                     ),
-
                     const SizedBox(height: 28),
-
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: isLoading ? null : () {},
                       style: OutlinedButton.styleFrom(
                         minimumSize: const Size(double.infinity, 50),
                         side: BorderSide(color: Colors.grey.shade300),
@@ -172,19 +204,18 @@ class _LoginViewState extends State<LoginView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Brand(Brands.google, size: 22),
-                          SizedBox(width: 12),
+                          const SizedBox(width: 12),
                           Text(
                             'Continue with Google',
-                            style: Theme.of(
-                              context,
-                            ).textTheme.headlineLarge?.copyWith(fontSize: 15),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(fontSize: 15),
                           ),
                         ],
                       ),
                     ),
-
                     const SizedBox(height: 32),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -196,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                             color: Colors.grey.shade600,
                           ),
                         ),
-                        CustomTextButton(text:"Create account")
+                        const CustomTextButton(text: "Create account"),
                       ],
                     ),
                   ],

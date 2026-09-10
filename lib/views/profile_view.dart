@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/providers/app_session_provider.dart';
 import '../widgets/custom_main_app_bar.dart';
 import '../widgets/widgets_profile/logout_bottom_sheet.dart';
 import '../widgets/widgets_profile/profile_header_card.dart';
 import '../widgets/widgets_profile/profile_sections_group.dart';
+import 'login_view.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends ConsumerWidget {
   const ProfileView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const CustomMainAppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            ProfileHeaderCard(),
+            const ProfileHeaderCard(),
 
             const SizedBox(height: 16),
 
@@ -26,7 +29,18 @@ class ProfileView extends StatelessWidget {
 
             TextButton.icon(
               onPressed: () {
-                LogoutBottomSheet.show(context, onLogout: () {});
+                LogoutBottomSheet.show(
+                  context,
+                  onLogout: () {
+                    ref.read(appSessionProvider.notifier).logout();
+                    
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const LoginView()),
+                        (route) => false,
+                      );
+                    
+                  },
+                );
               },
               icon: const Icon(
                 Icons.logout_rounded,
