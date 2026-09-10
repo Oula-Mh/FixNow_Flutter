@@ -40,7 +40,7 @@ class _ServiceCardState extends State<ServiceCard> {
                   top: Radius.circular(12),
                 ),
                 child: Image.asset(
-                  widget.service.imagePath,
+                  widget.service.image!,
                   height: 192,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -103,7 +103,7 @@ class _ServiceCardState extends State<ServiceCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.service.title,
+                      widget.service.name!,
                       style: const TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 20,
@@ -116,7 +116,7 @@ class _ServiceCardState extends State<ServiceCard> {
                         Icon(Icons.star_rounded, size: 18, color: primaryColor),
                         const SizedBox(width: 4),
                         Text(
-                          widget.service.rating,
+                          "${widget.service.rating}",
                           style: TextStyle(
                             fontFamily: 'PlusJakartaSans',
                             fontSize: 14,
@@ -148,7 +148,7 @@ class _ServiceCardState extends State<ServiceCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.service.price,
+                     " ${widget.service.price}",
                       style: const TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 22,

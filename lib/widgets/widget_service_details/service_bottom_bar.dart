@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ServiceBottomBar extends StatelessWidget {
-  const ServiceBottomBar({super.key});
+  final double price;
+  const ServiceBottomBar({required this.price,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class ServiceBottomBar extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '\$25',
+                  '\$$price',
                   style: TextStyle(
                     fontFamily: 'PlusJakartaSans',
                     fontSize: 22,

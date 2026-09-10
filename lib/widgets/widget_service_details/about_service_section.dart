@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../custom_text_button.dart';
 
 class AboutServiceSection extends StatelessWidget {
-  const AboutServiceSection({super.key});
+  final String description;
+  const AboutServiceSection({required this.description,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class AboutServiceSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            'Ensure your air conditioning unit runs efficiently and effectively with our comprehensive maintenance service. Regular maintenance extends the lifespan of your unit,',
+            description,
             style: TextStyle(
               fontFamily: 'Inter',
               fontSize: 14,

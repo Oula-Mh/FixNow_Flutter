@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../core/constants/api_constants.dart';
-import '../core/models/user_session.dart';
-import '../models/login_model.dart';
+import '../../core/constants/api_constants.dart';
+import '../../core/models/user_session.dart';
+import '../../models/login_model.dart';
 
 class AuthRemoteDataSource {
   final Dio _dio;

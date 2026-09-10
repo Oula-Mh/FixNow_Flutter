@@ -14,30 +14,30 @@ class FavoritesView extends StatefulWidget {
 
 class _FavoritesViewState extends State<FavoritesView> {
   final List<ServiceModel> favoriteServices = const [
-    ServiceModel(
-      imagePath: 'assets/images/onboarding1.png',
-      title: 'Deep Cleaning',
-      rating: '4.9',
-      price: '\$150',
-      description:
-          'Comprehensive home deep cleaning service including all rooms and appliances.',
-    ),
-    ServiceModel(
-      imagePath: 'assets/images/electrical.png',
-      title: 'Electrical Repair',
-      rating: '4.8',
-      price: '\$85/hr',
-      description:
-          'Licensed electricians for panel upgrades, rewiring, and fault fixing.',
-    ),
-    ServiceModel(
-      imagePath: 'assets/images/plumbing.png',
-      title: 'Plumbing Fix',
-      rating: '4.7',
-      price: '\$90/hr',
-      description:
-          'Emergency leak repairs, pipe installations, and general plumbing diagnostics.',
-    ),
+    // ServiceModel(
+    //   imagePath: 'assets/images/onboarding1.png',
+    //   title: 'Deep Cleaning',
+    //   rating: '4.9',
+    //   price: '\$150',
+    //   description:
+    //       'Comprehensive home deep cleaning service including all rooms and appliances.',
+    // ),
+    // ServiceModel(
+    //   imagePath: 'assets/images/electrical.png',
+    //   title: 'Electrical Repair',
+    //   rating: '4.8',
+    //   price: '\$85/hr',
+    //   description:
+    //       'Licensed electricians for panel upgrades, rewiring, and fault fixing.',
+    // ),
+    // ServiceModel(
+    //   imagePath: 'assets/images/plumbing.png',
+    //   title: 'Plumbing Fix',
+    //   rating: '4.7',
+    //   price: '\$90/hr',
+    //   description:
+    //       'Emergency leak repairs, pipe installations, and general plumbing diagnostics.',
+    // ),
   ];
 
   @override

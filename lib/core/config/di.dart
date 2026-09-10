@@ -3,9 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data_sources/auth_local_data_source.dart';
-import '../../data_sources/auth_remote_data_source.dart';
+import '../../data_sources/auth/auth_local_data_source.dart';
+import '../../data_sources/auth/auth_remote_data_source.dart';
+import '../../data_sources/profile/profile_remote_data_source.dart';
+import '../../data_sources/service/service_remote_data_source.dart';
 import '../../repositories/auth_repository.dart';
+import '../../repositories/profile_repository.dart';
+import '../../repositories/services_repository.dart';
 import '../constants/api_constants.dart';
 import '../storage/app_preferences.dart';
 import '../storage/secure_session_storage.dart';
@@ -48,6 +52,8 @@ final dioProvider = Provider<Dio>((ref) {
   return dio;
 });
 
+//==================================================================================
+
 
 final appPreferencesProvider = FutureProvider<AppPreferences>((ref) async {
   final prefs = await ref.watch(sharedPreferencesProvider.future);
@@ -59,7 +65,7 @@ final secureSessionStorageProvider = Provider<SecureSessionStorage>((ref) {
   return SecureSessionStorage(storage);
 });
 
-
+//==================================================================================
 
 final authLocalDataSourceProvider = Provider<AuthLocalDataSource>((ref) {
   final storage = ref.watch(secureSessionStorageProvider);
@@ -76,4 +82,28 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   final remoteDataSource = ref.watch(authRemoteDataSourceProvider);
   final localDataSource = ref.watch(authLocalDataSourceProvider);
   return AuthRepository(remoteDataSource, localDataSource);
+});
+
+//==================================================================================
+
+
+final servicesRemoteDataSourceProvider = Provider<ServiceRemoteDataSource>((ref) {
+  final dio = ref.watch(dioProvider); 
+  return ServiceRemoteDataSource(dio);
+});
+
+final servicesRepositoryProvider = Provider<ServicesRepository>((ref) {
+  final dataSource = ref.watch(servicesRemoteDataSourceProvider);
+  return ServicesRepository(dataSource);
+});
+
+//==================================================================================
+final profileRemoteDataSourceProvider = Provider<ProfileRemoteDataSource>((ref) {
+  final dio = ref.watch(dioProvider); 
+  return ProfileRemoteDataSource(dio);
+});
+
+final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
+  final dataSource = ref.watch(profileRemoteDataSourceProvider);
+  return ProfileRepository(dataSource);
 });

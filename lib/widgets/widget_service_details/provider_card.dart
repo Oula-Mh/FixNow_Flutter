@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../models/service_provider_model.dart';
+
 class ProviderCard extends StatelessWidget {
-  const ProviderCard({super.key});
+  final ServiceProviderModel serviceProvider;
+  const ProviderCard({required this.serviceProvider, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +21,10 @@ class ProviderCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
+               CircleAvatar(
                 radius: 26,
-                backgroundImage: AssetImage(
-                  'assets/images/user_service_details.png',
+                backgroundImage: NetworkImage(
+                  serviceProvider.image!,
                 ),
               ),
               const SizedBox(width: 12),
@@ -29,8 +32,8 @@ class ProviderCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Ahmad Maintenance',
+                     Text(
+                     serviceProvider.name!,
                       style: TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 20,
@@ -39,7 +42,7 @@ class ProviderCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'HVAC Specialist • 8 yrs exp.',
+                      'HVAC Specialist • ${serviceProvider.experienceYears} yrs exp.',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 14,
@@ -59,8 +62,8 @@ class ProviderCard extends StatelessWidget {
                 children: [
                   Icon(Icons.star_rounded, size: 20, color: primaryColor),
                   const SizedBox(width: 4),
-                  const Text(
-                    '4.9',
+                   Text(
+                    '${serviceProvider.rating}',
                     style: TextStyle(
                       fontFamily: 'PlusJakartaSans',
                       fontSize: 14,
@@ -69,7 +72,7 @@ class ProviderCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '(124)',
+                    '(${serviceProvider.reviewCount})',
                     style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 14,

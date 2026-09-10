@@ -4,5 +4,9 @@ class ApiConstants {
 
   static const String login = '/login';
     static const String logout = '/logout';
+        static const String services = '/services';
+                static const String profile = '/profile';
+
+
 
 }

@@ -23,7 +23,7 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   Widget build(BuildContext context) {
-    final services = ServiceModel.dummyServices;
+    // final services = ServiceModel.dummyServices;
 
     return Scaffold(
       appBar: SearchAppBar(
@@ -32,26 +32,26 @@ class _SearchViewState extends State<SearchView> {
 
         },
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16.0),
-        itemCount: services.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 16),
-        itemBuilder: (context, index) {
-          final service = services[index];
-          return ServiceCard(
-            service: service,
-            onBookTap: () {
- Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const BookingConfirmationView()),
-        );
-            },
-            onFavoriteToggle: (isFav) {
+//       body: ListView.separated(
+//         padding: const EdgeInsets.all(16.0),
+//         itemCount: services.length,
+//         separatorBuilder: (context, index) => const SizedBox(height: 16),
+//         itemBuilder: (context, index) {
+//           final service = services[index];
+//           return ServiceCard(
+//             service: service,
+//             onBookTap: () {
+//  Navigator.push(
+//           context,
+//           MaterialPageRoute(builder: (context) => const BookingConfirmationView()),
+//         );
+//             },
+//             onFavoriteToggle: (isFav) {
 
-            },
-          );
-        },
-      ),
+//             },
+//           );
+//         },
+//       ),
     );
   }
 }

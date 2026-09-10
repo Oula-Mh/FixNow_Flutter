@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WhatsIncludedSection extends StatelessWidget {
-  const WhatsIncludedSection({super.key});
-
-  static const List<String> _items = [
-    'Full system inspection',
-    'Filter cleaning or replacement',
-    'Refrigerant level check',
-    'Thermostat calibration',
-    'Coil and fin cleaning',
-  ];
+  final List<String> items;
+  const WhatsIncludedSection({required this.items, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +34,11 @@ class WhatsIncludedSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          ..._items.map(
+          ...items.map(
             (item) => Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
                     Icons.check_circle_outline,
@@ -52,12 +46,14 @@ class WhatsIncludedSection extends StatelessWidget {
                     color: primaryColor,
                   ),
                   const SizedBox(width: 8),
-                  Text(
-                    item,
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14,
-                      color: Colors.grey.shade800,
+                  Flexible(
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 14,
+                        color: Colors.grey.shade800,
+                      ),
                     ),
                   ),
                 ],

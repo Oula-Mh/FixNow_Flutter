@@ -1,7 +1,7 @@
 import '../core/models/user_session.dart';
 import '../core/network/network_exceptions.dart';
-import '../data_sources/auth_local_data_source.dart';
-import '../data_sources/auth_remote_data_source.dart';
+import '../data_sources/auth/auth_local_data_source.dart';
+import '../data_sources/auth/auth_remote_data_source.dart';
 import '../models/login_model.dart';
 
 class AuthRepository {

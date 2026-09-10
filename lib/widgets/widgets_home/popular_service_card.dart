@@ -27,8 +27,8 @@ class PopularServiceCard extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(16),
               ),
-              child: Image.asset(
-                service.imagePath,
+              child: Image.network(
+                service.image!,
                 height: 178,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -47,7 +47,7 @@ class PopularServiceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    service.title,
+                    service.name!,
                     style: const TextStyle(
                       fontFamily: 'PlusJakartaSans',
                       fontSize: 17,
@@ -67,7 +67,7 @@ class PopularServiceCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        service.rating,
+                        "${service.rating}",
                         style: TextStyle(
                           fontFamily: 'Inter',
                           fontSize: 13,
@@ -81,7 +81,7 @@ class PopularServiceCard extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: service.price,
+                          text:" ${service.price}",
                           style: const TextStyle(
                             fontFamily: 'PlusJakartaSans',
                             fontSize: 20,
