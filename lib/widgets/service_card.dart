@@ -101,14 +101,17 @@ class _ServiceCardState extends State<ServiceCard> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.service.name!,
-                      style: const TextStyle(
-                        fontFamily: 'PlusJakartaSans',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF0F172A),
+                    Flexible(
+                      child: Text(
+                        widget.service.name!,
+                        style: const TextStyle(
+                          fontFamily: 'PlusJakartaSans',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF0F172A),
+                        ),
                       ),
                     ),
                     Row(
@@ -148,7 +151,7 @@ class _ServiceCardState extends State<ServiceCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                     " ${widget.service.price}",
+                      " ${widget.service.price}",
                       style: const TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 22,
