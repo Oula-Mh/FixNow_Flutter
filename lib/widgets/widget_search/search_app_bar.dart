@@ -17,10 +17,6 @@ class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      // leading: IconButton(
-      //   icon: const Icon(Icons.arrow_back, color: Color(0xFF1E293B)),
-      //   onPressed: () => Navigator.of(context).pop(),
-      // ),
       titleSpacing: 0,
       title: Padding(
         padding: const EdgeInsets.only(right: 16.0),

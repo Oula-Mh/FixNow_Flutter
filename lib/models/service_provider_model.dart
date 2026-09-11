@@ -1,13 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'package:hive_flutter/hive_flutter.dart';
 
+part 'service_provider_model.g.dart';
+
+@HiveType(typeId: 1)
 class ServiceProviderModel {
+  @HiveField(0)
   final int? id;
+
+  @HiveField(1)
   final String? name;
+
+  @HiveField(2)
   final String? specialty;
-  final num? experienceYears; 
+
+  @HiveField(3)
+  final num? experienceYears;
+
+  @HiveField(4)
   final double? rating;
-  final num? reviewCount;     
+
+  @HiveField(5)
+  final num? reviewCount;
+
+  @HiveField(6)
   final String? image;
   ServiceProviderModel({
     this.id,

@@ -1,16 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data_sources/auth/auth_local_data_source.dart';
 import '../../data_sources/auth/auth_remote_data_source.dart';
+import '../../data_sources/favorites_local_data_source.dart';
 import '../../data_sources/profile/profile_remote_data_source.dart';
 import '../../data_sources/service/service_remote_data_source.dart';
+import '../../models/service_model.dart';
 import '../../repositories/auth_repository.dart';
+import '../../repositories/favorites_repository.dart';
 import '../../repositories/profile_repository.dart';
 import '../../repositories/services_repository.dart';
 import '../constants/api_constants.dart';
+import '../constants/app_keys.dart';
 import '../storage/app_preferences.dart';
 import '../storage/secure_session_storage.dart';
 
@@ -106,4 +111,19 @@ final profileRemoteDataSourceProvider = Provider<ProfileRemoteDataSource>((ref) 
 final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
   final dataSource = ref.watch(profileRemoteDataSourceProvider);
   return ProfileRepository(dataSource);
+});
+
+//==================================================================================
+
+
+
+final favoritesLocalDataSourceProvider = Provider<FavoritesLocalDataSource>((ref) {
+    final box = Hive.box<ServiceModel>( AppKeys.favouriteBox
+);
+  return FavoritesLocalDataSource(box);
+});
+
+final favoritesRepositoryProvider = Provider<FavoritesRepository>((ref) {
+  final dataSource = ref.watch(favoritesLocalDataSourceProvider);
+  return FavoritesRepository(dataSource);
 });

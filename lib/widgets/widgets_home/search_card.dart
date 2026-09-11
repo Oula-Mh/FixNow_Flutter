@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SearchTriggerCard extends StatelessWidget {
+class SearchCard extends StatelessWidget {
   final String hintText;
   final VoidCallback onTap;
 
-  const SearchTriggerCard({
-    super.key,
-    required this.hintText,
-    required this.onTap,
-  });
+  const SearchCard({super.key, required this.hintText, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +19,7 @@ class SearchTriggerCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              Icons.search,
-              color: Colors.grey.shade500,
-              size: 20,
-            ),
+            Icon(Icons.search, color: Colors.grey.shade500, size: 20),
             const SizedBox(width: 12),
             Text(
               hintText,

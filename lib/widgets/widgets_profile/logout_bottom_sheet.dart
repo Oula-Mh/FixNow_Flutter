@@ -28,7 +28,6 @@ class LogoutBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Drag Handle
           Container(
             width: 40,
             height: 4,
@@ -39,7 +38,6 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // Title
           Text(
             'Logout',
             style: TextStyle(
@@ -51,7 +49,6 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 12),
 
-          // Description
           Text(
             'Are you sure you want to logout? You\nwill need to enter your credentials again\nto access your account.',
             textAlign: TextAlign.center,
@@ -64,7 +61,6 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 24),
 
-          // Logout Button
           SizedBox(
             width: double.infinity,
             height: 48,
@@ -73,13 +69,6 @@ class LogoutBottomSheet extends StatelessWidget {
                 Navigator.pop(context);
                 onLogout();
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
               child: const Text(
                 'Logout',
                 style: TextStyle(
@@ -93,7 +82,6 @@ class LogoutBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 12),
 
-          // Cancel Button
           SizedBox(
             width: double.infinity,
             height: 48,

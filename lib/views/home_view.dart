@@ -5,7 +5,7 @@ import '../widgets/widgets_home/home_app_bar.dart';
 import '../widgets/widgets_home/location.dart';
 import '../widgets/widgets_home/need_help_card.dart';
 import '../widgets/widgets_home/popular_services_section.dart';
-import '../widgets/widgets_home/search_trigger_card.dart';
+import '../widgets/widgets_home/search_card.dart';
 import 'search_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            SearchTriggerCard(
+            SearchCard(
               hintText: 'What service do you need?',
               onTap: () {
                 Navigator.push(

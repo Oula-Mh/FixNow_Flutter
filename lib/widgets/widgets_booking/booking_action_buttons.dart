@@ -34,7 +34,6 @@ class BookingActionButtons extends StatelessWidget {
         ),
         const SizedBox(height: 16),
 
-        // Back to Home Button
         SizedBox(
           width: double.infinity,
           height: 56,

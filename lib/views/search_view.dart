@@ -68,7 +68,6 @@ class _SearchViewState extends ConsumerState<SearchView> {
                     ),
                   );
                 },
-                onFavoriteToggle: (isFav) {},
               );
             },
           );

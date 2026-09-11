@@ -43,28 +43,24 @@ class OrderSummaryCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // Subtotal
-          _buildSummaryRow(
+         _buildSummaryRow(
             label: 'Subtotal ($itemCount items)',
             value: '\$${subtotal.toStringAsFixed(2)}',
           ),
           const SizedBox(height: 10),
 
-          // Service Fee
           _buildSummaryRow(
             label: 'Service Fee',
             value: '\$${serviceFee.toStringAsFixed(2)}',
           ),
           const SizedBox(height: 10),
 
-          // Tax
           _buildSummaryRow(label: 'Tax', value: '\$${tax.toStringAsFixed(2)}'),
           const SizedBox(height: 16),
 
           Divider(color: Colors.grey.shade300, height: 1),
           const SizedBox(height: 16),
 
-          // Total
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

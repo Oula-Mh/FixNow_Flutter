@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../models/cart_item_model.dart';
 import '../widgets/custom_main_app_bar.dart';
-import '../widgets/widgets_cart/cart_item_card.dart';
 import '../widgets/widgets_cart/order_summary_card.dart';
 
 
@@ -16,7 +15,6 @@ class CartView extends StatefulWidget {
 class _CartViewState extends State<CartView> {
   List<CartItemModel> cartItems = List.from(CartItemModel.dummyCartItems);
 
-  // حساب المجموع الفرعي
   double get subtotal =>
       cartItems.fold(0, (sum, item) => sum + item.price);
 
@@ -34,7 +32,6 @@ class _CartViewState extends State<CartView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // العنوان الرئيسي
             Text(
               'Your Cart',
               style: TextStyle(
@@ -46,31 +43,28 @@ class _CartViewState extends State<CartView> {
             ),
             const SizedBox(height: 16),
 
-            // قائمة عناصر السلة
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: cartItems.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                final item = cartItems[index];
-                return CartItemCard(
-                  item: item,
-                  onModify: () {
-                    // منطق التعديل
-                  },
-                  onRemove: () {
-                    setState(() {
-                      cartItems.removeAt(index);
-                    });
-                  },
-                );
-              },
-            ),
+            // ListView.separated(
+            //   shrinkWrap: true,
+            //   physics: const NeverScrollableScrollPhysics(),
+            //   itemCount: cartItems.length,
+            //   separatorBuilder: (context, index) => const SizedBox(height: 16),
+            //   itemBuilder: (context, index) {
+            //     final item = cartItems[index];
+            //     return CartItemCard(
+            //       item: item,
+            //       onModify: () {
+            //       },
+            //       onRemove: () {
+            //         setState(() {
+            //           cartItems.removeAt(index);
+            //         });
+            //       },
+            //     );
+            //   },
+            // ),
 
             const SizedBox(height: 20),
 
-            // ملخص الفاتورة
             if (cartItems.isNotEmpty)
               OrderSummaryCard(
                 itemCount: cartItems.length,
@@ -78,7 +72,6 @@ class _CartViewState extends State<CartView> {
                 serviceFee: serviceFee,
                 tax: tax,
                 onCheckout: () {
-                  // الانتقال إلى الدفع Checkout
                 },
               ),
           ],

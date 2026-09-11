@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/service_model.dart';
+import '../../provider/favorites_provider.dart';
+import '../favorite_button_positioned.dart';
 
-class PopularServiceCard extends StatelessWidget {
+class PopularServiceCard extends ConsumerWidget {
   final ServiceModel service;
   final VoidCallback? onTap;
 
   const PopularServiceCard({super.key, required this.service, this.onTap});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    ref.watch(favoritesProvider);
+
+    final isFav = ref.read(favoritesProvider.notifier).isFavorite(service.id!);
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
@@ -23,23 +31,36 @@ class PopularServiceCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(16),
-              ),
-              child: Image.network(
-                service.image!,
-                height: 178,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                errorBuilder:
-                    (context, error, stackTrace) => Container(
-                      height: 178,
-                      width: double.infinity,
-                      color: Colors.grey.shade200,
-                      child: const Icon(Icons.image, color: Colors.grey),
-                    ),
-              ),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
+                  child: Image.network(
+                    service.image!,
+                    height: 178,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder:
+                        (context, error, stackTrace) => Container(
+                          height: 178,
+                          width: double.infinity,
+                          color: Colors.grey.shade200,
+                          child: const Icon(Icons.image, color: Colors.grey),
+                        ),
+                  ),
+                ),
+
+                FavoriteButtonPositioned(
+                  onTap: () {
+                    ref
+                        .read(favoritesProvider.notifier)
+                        .toggleFavorite(service);
+                  },
+                  isFavorite: isFav,
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -47,7 +68,7 @@ class PopularServiceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    service.name!,
+                    service.name ?? '',
                     style: const TextStyle(
                       fontFamily: 'PlusJakartaSans',
                       fontSize: 17,
@@ -67,7 +88,7 @@ class PopularServiceCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        "${service.rating}",
+                        "${service.rating ?? 0}",
                         style: TextStyle(
                           fontFamily: 'Inter',
                           fontSize: 13,
@@ -81,7 +102,7 @@ class PopularServiceCard extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text:" ${service.price}",
+                          text: "${service.price ?? 0}",
                           style: const TextStyle(
                             fontFamily: 'PlusJakartaSans',
                             fontSize: 20,

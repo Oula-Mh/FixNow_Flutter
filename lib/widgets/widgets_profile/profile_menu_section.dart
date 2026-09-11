@@ -36,7 +36,6 @@ class ProfileMenuSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section Title
           Text(
             sectionTitle,
             style: TextStyle(
@@ -51,7 +50,6 @@ class ProfileMenuSection extends StatelessWidget {
           Divider(color: Colors.grey.shade300, thickness: 1, height: 1),
           const SizedBox(height: 16),
 
-          // List of Menu Items
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

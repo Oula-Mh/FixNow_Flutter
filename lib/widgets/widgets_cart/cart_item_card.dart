@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../models/cart_item_model.dart';
+import '../../models/service_model.dart';
 
 class CartItemCard extends StatelessWidget {
-  final CartItemModel item;
+  final ServiceModel item;
   final VoidCallback onModify;
   final VoidCallback onRemove;
 
@@ -31,7 +31,7 @@ class CartItemCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-              item.imagePath,
+              item.image!,
               height: 140,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class CartItemCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  item.title,
+                  item.name!,
                   style: const TextStyle(
                     fontFamily: 'PlusJakartaSans',
                     fontSize: 18,
@@ -66,7 +66,7 @@ class CartItemCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$${item.price.toStringAsFixed(0)}',
+                '\$${item.price}',
                 style: const TextStyle(
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 20,
@@ -83,7 +83,7 @@ class CartItemCard extends StatelessWidget {
               Icon(Icons.person_outline, size: 16, color: Colors.grey.shade600),
               const SizedBox(width: 4),
               Text(
-                item.providerName,
+                item.provider!.name!,
                 style: Theme.of(
                   context,
                 ).textTheme.bodyLarge?.copyWith(fontSize: 14),
@@ -101,7 +101,7 @@ class CartItemCard extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                item.dateTime,
+                "Today, 18:00",
                 style: Theme.of(
                   context,
                 ).textTheme.bodyLarge?.copyWith(fontSize: 14),
@@ -114,7 +114,7 @@ class CartItemCard extends StatelessWidget {
               ),
               const SizedBox(width: 2),
               Text(
-                item.location,
+                "Damascus",
                 style: Theme.of(
                   context,
                 ).textTheme.bodyLarge?.copyWith(fontSize: 14),

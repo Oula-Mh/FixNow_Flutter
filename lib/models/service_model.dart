@@ -1,20 +1,42 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+ 
 import 'service_provider_model.dart';
 
-class ServiceModel {
+part 'service_model.g.dart';
+
+@HiveType(typeId: 0)
+class ServiceModel extends HiveObject {
+  @HiveField(0)
   final int? id;
+
+  @HiveField(1)
   final String? name;
+
+  @HiveField(2)
   final String? description;
+
+  @HiveField(3)
   final String? category;
+
+  @HiveField(4)
   final double? price;
+
+  @HiveField(5)
   final String? image;
+
+  @HiveField(6)
   final double? rating;
+
+  @HiveField(7)
   final int? reviewCount;
+
+  @HiveField(8)
   final List<String>? includes;
+
+  @HiveField(9)
   final ServiceProviderModel? provider;
   ServiceModel({
     this.id,

@@ -9,7 +9,6 @@ class ProfileSectionsGroup extends StatelessWidget {
     return Column(
       children: [
 
-        // My Activity Section
         ProfileMenuSection(
           sectionTitle: 'My Activity',
           items: [
@@ -33,7 +32,6 @@ class ProfileSectionsGroup extends StatelessWidget {
         const SizedBox(height: 16),
 
 
-        // Account Section
         ProfileMenuSection(
           sectionTitle: 'Account',
           items: [
@@ -57,7 +55,6 @@ class ProfileSectionsGroup extends StatelessWidget {
         const SizedBox(height: 16),
 
 
-        // Support Section
         ProfileMenuSection(
           sectionTitle: 'Support',
           items: [
