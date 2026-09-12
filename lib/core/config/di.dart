@@ -6,11 +6,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data_sources/auth/auth_local_data_source.dart';
 import '../../data_sources/auth/auth_remote_data_source.dart';
+import '../../data_sources/cart_local_data_source.dart';
 import '../../data_sources/favorites_local_data_source.dart';
 import '../../data_sources/profile/profile_remote_data_source.dart';
 import '../../data_sources/service/service_remote_data_source.dart';
 import '../../models/service_model.dart';
 import '../../repositories/auth_repository.dart';
+import '../../repositories/cart_repository.dart';
 import '../../repositories/favorites_repository.dart';
 import '../../repositories/profile_repository.dart';
 import '../../repositories/services_repository.dart';
@@ -126,4 +128,16 @@ final favoritesLocalDataSourceProvider = Provider<FavoritesLocalDataSource>((ref
 final favoritesRepositoryProvider = Provider<FavoritesRepository>((ref) {
   final dataSource = ref.watch(favoritesLocalDataSourceProvider);
   return FavoritesRepository(dataSource);
+});
+
+//===================================================================================
+
+final cartLocalDataSourceProvider = Provider<CartLocalDataSource>((ref) {
+  final box = Hive.box<ServiceModel>(AppKeys.cartBox);
+  return CartLocalDataSource(box);
+});
+
+final cartRepositoryProvider = Provider<CartRepository>((ref) {
+  final dataSource = ref.watch(cartLocalDataSourceProvider);
+  return CartRepository(dataSource);
 });

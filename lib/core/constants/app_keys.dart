@@ -5,6 +5,8 @@ class AppKeys {
   static const String accessToken = 'access_token';
   static const String refreshToken = 'refresh_token';
   static const String onboardingCompleted = 'onboarding_completed';
-    static const String favouriteBox = 'favorites_box';
+  static const String favouriteBox = 'favorites_box';
+  static const String cartBox = 'cart_box';
+
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'core/constants/app_keys.dart';
 import 'core/providers/theme_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'models/service_model.dart';
@@ -15,7 +16,11 @@ await Hive.initFlutter();
   Hive.registerAdapter(ServiceProviderModelAdapter()); 
   Hive.registerAdapter(ServiceModelAdapter());       
 
-  await Hive.openBox<ServiceModel>('favorites_box');
+  //  Box<ServiceModel> _ = await Hive.openBox<ServiceModel>(AppKeys.favouriteBox);
+  // Box<ServiceModel> _=  await Hive.openBox<ServiceModel>(AppKeys.cartBox);
+    await Hive.openBox<ServiceModel>(AppKeys.favouriteBox);
+ await Hive.openBox<ServiceModel>(AppKeys.cartBox);
+
  runApp(
     const ProviderScope(
       child: MyApp(),

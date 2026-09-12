@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ServiceBottomBar extends StatelessWidget {
-  final double price;
-  const ServiceBottomBar({required this.price,super.key});
+import '../../models/service_model.dart';
+import '../../provider/cart_provider.dart';
+
+
+
+class ServiceBottomBar extends ConsumerWidget {
+  final ServiceModel service;
+
+  const ServiceBottomBar({required this.service, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final primaryColor = Theme.of(context).colorScheme.primary;
+
+    ref.watch(cartProvider);
+
+    final cartNotifier = ref.read(cartProvider.notifier);
+    final isInCart =cartNotifier.isInCart(service.id!);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -22,7 +34,7 @@ class ServiceBottomBar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Estimated',
                   style: TextStyle(
                     fontFamily: 'Inter',
@@ -31,7 +43,7 @@ class ServiceBottomBar extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '\$$price',
+                  '\$${service.price }',
                   style: TextStyle(
                     fontFamily: 'PlusJakartaSans',
                     fontSize: 22,
@@ -42,14 +54,21 @@ class ServiceBottomBar extends StatelessWidget {
               ],
             ),
             FilledButton(
-              onPressed: () {},
-              child: const Text(
-                'Add to Cart',
+              onPressed: isInCart
+                  ? null
+                  : () {
+                      cartNotifier.addToCart(service);
+                    },
+              style: FilledButton.styleFrom(
+                disabledBackgroundColor: Colors.grey.shade300,
+              ),
+              child: Text(
+                isInCart ? 'Added to Cart' : 'Add to Cart',
                 style: TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: isInCart ? Colors.grey.shade600 : Colors.white,
                 ),
               ),
             ),

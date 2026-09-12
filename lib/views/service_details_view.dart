@@ -41,7 +41,7 @@ class ServiceDetailsView extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar:  ServiceBottomBar(price: serviceModel.price!,),
+      bottomNavigationBar:  ServiceBottomBar(service: serviceModel,),
     );
   }
 }

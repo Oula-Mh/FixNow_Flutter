@@ -64,7 +64,7 @@ class LogoutBottomSheet extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: 48,
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () {
                 Navigator.pop(context);
                 onLogout();

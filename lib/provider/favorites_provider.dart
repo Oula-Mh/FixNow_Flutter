@@ -11,7 +11,7 @@ final favoritesProvider = AsyncNotifierProvider<FavoritesNotifier, List<ServiceM
 class FavoritesNotifier extends AsyncNotifier<List<ServiceModel>> {
   
   @override
-  FutureOr<List<ServiceModel>> build() {
+  Future<List<ServiceModel>> build()async {
     final repository = ref.read(favoritesRepositoryProvider);
     return repository.getFavorites();
   }
@@ -19,7 +19,7 @@ class FavoritesNotifier extends AsyncNotifier<List<ServiceModel>> {
 Future<void> toggleFavorite(ServiceModel service) async {
   final repository = ref.read(favoritesRepositoryProvider);
   try {
-    await repository.toggleFavorite(service);
+    await repository.toggleFavorite(service); 
     final updatedList = repository.getFavorites();
     state = AsyncData(updatedList);
   } catch (error, stackTrace) {

@@ -16,7 +16,9 @@ class OrderSummaryCard extends StatelessWidget {
     required this.onCheckout,
   });
 
-  double get total => subtotal + serviceFee + tax;
+  double get total {
+    return subtotal + serviceFee + tax;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +45,16 @@ class OrderSummaryCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-         _buildSummaryRow(
-            label: 'Subtotal ($itemCount items)',
-            value: '\$${subtotal.toStringAsFixed(2)}',
-          ),
-          const SizedBox(height: 10),
-
           _buildSummaryRow(
-            label: 'Service Fee',
-            value: '\$${serviceFee.toStringAsFixed(2)}',
+            label: 'Subtotal ($itemCount items)',
+            value: '\$$subtotal',
           ),
           const SizedBox(height: 10),
 
-          _buildSummaryRow(label: 'Tax', value: '\$${tax.toStringAsFixed(2)}'),
+          _buildSummaryRow(label: 'Service Fee', value: '\$$serviceFee'),
+          const SizedBox(height: 10),
+
+          _buildSummaryRow(label: 'Tax', value: '\$$tax'),
           const SizedBox(height: 16),
 
           Divider(color: Colors.grey.shade300, height: 1),
@@ -74,7 +73,7 @@ class OrderSummaryCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$${total.toStringAsFixed(2)}',
+                '\$$total',
                 style: TextStyle(
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 22,
