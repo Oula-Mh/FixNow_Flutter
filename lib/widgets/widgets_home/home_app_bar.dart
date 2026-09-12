@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/providers/theme_provider.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final primaryColor = Theme.of(context).colorScheme.primary;
+    final themeMode = ref.watch(themeNotifierProvider);
+    final isDark = themeMode == ThemeMode.dark;
 
     return AppBar(
       scrolledUnderElevation: 0,
@@ -45,20 +49,30 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [
+        IconButton(
+          onPressed: () {
+            ref.read(themeNotifierProvider.notifier).toggleTheme();
+          },
+          icon: Icon(
+            isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+            size: 24,
+            color: Theme.of(context).iconTheme.color,
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon: Icon(
               Icons.notifications_none_outlined,
               size: 26,
-              color: Color(0xFF1E293B),
+              color: Theme.of(context).iconTheme.color,
             ),
           ),
         ),
       ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
+      bottom: const PreferredSize(
+        preferredSize: Size.fromHeight(1),
         child: Divider(height: 1, thickness: 1, color: Color(0xffBDC9C9)),
       ),
     );

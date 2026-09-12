@@ -40,7 +40,6 @@ class OrderSummaryCard extends StatelessWidget {
               fontFamily: 'PlusJakartaSans',
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 16),
@@ -69,7 +68,6 @@ class OrderSummaryCard extends StatelessWidget {
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
                 ),
               ),
               Text(
@@ -125,8 +123,7 @@ class OrderSummaryCard extends StatelessWidget {
             fontFamily: 'Inter',
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Color(0xFF0F172A),
-          ),
+                    ),
         ),
       ],
     );

@@ -34,7 +34,7 @@ class CustomConfirmDialog extends StatelessWidget {
         style: const TextStyle(
           fontFamily: 'PlusJakartaSans',
           fontSize: 14,
-          color: Colors.black87,
+          // color: Colors.black87,
         ),
       ),
       actionsPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

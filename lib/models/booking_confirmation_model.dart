@@ -1,11 +1,11 @@
-class BookingConfirmationModel {
+class BookingConfirmModel {
   final String bookingRef;
   final String serviceTitle;
   final String professionalName;
   final String dateTime;
   final String address;
 
-  const BookingConfirmationModel({
+  const BookingConfirmModel({
     required this.bookingRef,
     required this.serviceTitle,
     required this.professionalName,
@@ -13,7 +13,7 @@ class BookingConfirmationModel {
     required this.address,
   });
 
-  static const BookingConfirmationModel dummyData = BookingConfirmationModel(
+  static const BookingConfirmModel dummyData = BookingConfirmModel(
     bookingRef: '#FXN-8472',
     serviceTitle: 'Emergency Plumbing',
     professionalName: 'Michael R.',

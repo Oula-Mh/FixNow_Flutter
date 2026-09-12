@@ -45,7 +45,7 @@ class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               contentPadding: const EdgeInsets.symmetric(vertical: 10),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Theme.of(context).colorScheme.surface,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24),
                 borderSide: BorderSide(color: primaryColor, width: 1.5),

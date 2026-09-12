@@ -8,7 +8,8 @@ class NeedHelpCard extends StatelessWidget {
     final primaryColor = Theme.of(context).colorScheme.primary;
 
     return Card(
-      color: Colors.white,
+      elevation: 4,
+      color: Theme.of(context).colorScheme.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: Padding(
         padding: const EdgeInsets.all(20.0),

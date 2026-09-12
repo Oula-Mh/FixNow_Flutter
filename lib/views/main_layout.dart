@@ -44,9 +44,9 @@ class _MainLayoutState extends State<MainLayout> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           selectedItemColor: primaryColor,
-          unselectedItemColor: const Color(0xFF64748B),
+        //  unselectedItemColor: const Color(0xFF64748B),
           selectedLabelStyle: const TextStyle(
             fontFamily: 'PlusJakartaSans',
             fontSize: 12,

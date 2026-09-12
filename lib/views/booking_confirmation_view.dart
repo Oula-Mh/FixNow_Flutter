@@ -6,11 +6,11 @@ import '../widgets/widgets_booking/booking_details_card.dart';
 import '../widgets/widgets_booking/booking_success_header.dart';
 
 class BookingConfirmationView extends StatelessWidget {
-  final BookingConfirmationModel bookingData;
+  final BookingConfirmModel bookingData;
 
   const BookingConfirmationView({
     super.key,
-    this.bookingData = BookingConfirmationModel.dummyData,
+    this.bookingData = BookingConfirmModel.dummyData,
   });
 
   @override

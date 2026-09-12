@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/service_model.dart';
 import '../provider/favorites_provider.dart';
+import 'favorite_button_positioned.dart';
 
 class ServiceCard extends ConsumerWidget {
   final ServiceModel service;
@@ -44,7 +45,7 @@ class ServiceCard extends ConsumerWidget {
                   errorBuilder: (context, error, stackTrace) => Container(
                     height: 192,
                     width: double.infinity,
-                    color: Colors.grey.shade200,
+                    color: Theme.of(context).colorScheme.secondary,
                     child: const Icon(
                       Icons.image,
                       color: Colors.grey,
@@ -53,29 +54,12 @@ class ServiceCard extends ConsumerWidget {
                   ),
                 ),
               ),
-              Positioned(
-                top: 12,
-                right: 12,
-                child: GestureDetector(
+              FavoriteButtonPositioned(
                   onTap: () {
-                    ref.read(favoritesProvider.notifier).toggleFavorite(service);
+                  ref.read(favoritesProvider.notifier).toggleFavorite(service);
                   },
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    
-                    ),
-                    child: Icon(
-                      isFav ? Icons.favorite : Icons.favorite_border,
-                      color:  primaryColor,
-                      size: 22,
-                    ),
-                  ),
+                  isFavorite: isFav,
                 ),
-              ),
             ],
           ),
 
@@ -90,12 +74,11 @@ class ServiceCard extends ConsumerWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        service.name ?? '',
+                        service.name!,
                         style: const TextStyle(
                           fontFamily: 'PlusJakartaSans',
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF0F172A),
                         ),
                       ),
                     ),
@@ -104,7 +87,7 @@ class ServiceCard extends ConsumerWidget {
                         Icon(Icons.star_rounded, size: 18, color: primaryColor),
                         const SizedBox(width: 4),
                         Text(
-                          "${service.rating ?? 0}",
+                          "${service.rating}",
                           style: TextStyle(
                             fontFamily: 'PlusJakartaSans',
                             fontSize: 14,
@@ -136,12 +119,11 @@ class ServiceCard extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      " ${service.price ?? 0}",
+                      "\$${service.price ?? 0}",
                       style: const TextStyle(
                         fontFamily: 'PlusJakartaSans',
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF0F172A),
                       ),
                     ),
                     SizedBox(

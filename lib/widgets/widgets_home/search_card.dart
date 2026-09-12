@@ -13,7 +13,7 @@ class SearchCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.grey.shade300, width: 1.2),
         ),

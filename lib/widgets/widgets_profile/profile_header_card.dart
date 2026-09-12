@@ -44,7 +44,6 @@ class ProfileHeaderCard extends ConsumerWidget {
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
                 ),
               ),
               const SizedBox(height: 4),

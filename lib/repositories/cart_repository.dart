@@ -12,7 +12,4 @@ class CartRepository {
 
   Future<void> removeFromCart(int serviceId) => _localDataSource.removeFromCart(serviceId);
 
-  Future<void> clearCart() => _localDataSource.clearCart();
-
-  bool isInCart(int serviceId) => _localDataSource.isInCart(serviceId);
-}
+ }

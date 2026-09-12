@@ -11,7 +11,7 @@ class LogoutBottomSheet extends StatelessWidget {
   static Future<void> show(BuildContext context, {required VoidCallback onLogout}) {
     return showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor:Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),

@@ -37,7 +37,9 @@ class AppTheme {
     appBarTheme: AppBarTheme(backgroundColor: Color(0xFFF9F9F8)),
     scaffoldBackgroundColor: Color(0xFFF9F9F8),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
+      seedColor: const Color(0xFFF3F4F3),
+            secondary: const Color(0xFFF3F4F3),
+
       primary: primaryColor,
       brightness: Brightness.light,
       surface: Colors.white,
@@ -69,8 +71,12 @@ filledButtonTheme: FilledButtonThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xFF121819),
     colorScheme: ColorScheme.fromSeed(
+      primary: primaryColor,
+      secondary: Color.fromARGB(255, 46, 54, 56),
       seedColor: primaryColor,
       brightness: Brightness.dark,
+            surface: Color.fromARGB(255, 31, 37, 39),
+
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       foregroundColor: Colors.white,
@@ -89,7 +95,7 @@ filledButtonTheme: FilledButtonThemeData(
 
       headlineMedium: titleSemiBold24.copyWith(color: Colors.white),
 
-      bodyLarge: bodyRegular16.copyWith(color: const Color(0xFFE2E8F0)),
+      bodyLarge: bodyRegular16.copyWith(color:  Colors.white70),
     ),
   );
 }

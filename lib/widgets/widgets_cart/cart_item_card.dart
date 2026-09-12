@@ -30,7 +30,7 @@ class CartItemCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
+            child: Image.network(
               item.image!,
               height: 140,
               width: double.infinity,
@@ -61,7 +61,6 @@ class CartItemCard extends StatelessWidget {
                     fontFamily: 'PlusJakartaSans',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF0F172A),
                   ),
                 ),
               ),
@@ -71,7 +70,6 @@ class CartItemCard extends StatelessWidget {
                   fontFamily: 'PlusJakartaSans',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
                 ),
               ),
             ],

@@ -18,10 +18,6 @@ class CartLocalDataSource {
     await _box.delete(serviceId);
   }
 
-  Future<void> clearCart() async {
-    await _box.clear();
-  }
-
   bool isInCart(int serviceId) {
     return _box.containsKey(serviceId);
   }

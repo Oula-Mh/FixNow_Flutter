@@ -42,7 +42,6 @@ class BookingSuccessHeader extends StatelessWidget {
             fontFamily: 'PlusJakartaSans',
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF0F172A),
           ),
         ),
         const SizedBox(height: 8),

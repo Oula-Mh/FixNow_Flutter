@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../models/booking_confirmation_model.dart';
 
 class BookingDetailsCard extends StatelessWidget {
-  final BookingConfirmationModel bookingData;
+  final BookingConfirmModel bookingData;
 
   const BookingDetailsCard({super.key, required this.bookingData});
 
@@ -15,7 +15,7 @@ class BookingDetailsCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9F9F8),
+        color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Color(0xffBDC9C9)),
       ),
@@ -69,7 +69,6 @@ class BookingDetailsCard extends StatelessWidget {
                     fontFamily: 'Inter',
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFF0F172A),
                   ),
                 ),
               ],
@@ -114,7 +113,6 @@ class BookingDetailsCard extends StatelessWidget {
               fontFamily: 'Inter',
               fontSize: 15,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF0F172A),
             ),
           ),
       ],

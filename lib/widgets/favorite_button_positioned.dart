@@ -8,7 +8,6 @@ class FavoriteButtonPositioned extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.isFavorite,
-  
   });
 
   @override
@@ -23,8 +22,9 @@ class FavoriteButtonPositioned extends StatelessWidget {
         child: Container(
           width: 40,
           height: 40,
-          decoration: const BoxDecoration(
-            color: Colors.white,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -36,7 +36,7 @@ class FavoriteButtonPositioned extends StatelessWidget {
           ),
           child: Icon(
             isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: primaryColor,
+            color: isFavorite ? Colors.red : primaryColor,
             size: 22,
           ),
         ),

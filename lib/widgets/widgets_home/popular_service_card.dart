@@ -12,7 +12,6 @@ class PopularServiceCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     ref.watch(favoritesProvider);
 
     final isFav = ref.read(favoritesProvider.notifier).isFavorite(service.id!);
@@ -24,7 +23,7 @@ class PopularServiceCard extends ConsumerWidget {
         width: 240,
         height: 312,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Colors.grey.shade300, width: 0.8),
         ),
@@ -46,7 +45,7 @@ class PopularServiceCard extends ConsumerWidget {
                         (context, error, stackTrace) => Container(
                           height: 178,
                           width: double.infinity,
-                          color: Colors.grey.shade200,
+                          color: Theme.of(context).colorScheme.secondary,
                           child: const Icon(Icons.image, color: Colors.grey),
                         ),
                   ),
@@ -68,12 +67,11 @@ class PopularServiceCard extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    service.name ?? '',
+                    service.name!,
                     style: const TextStyle(
                       fontFamily: 'PlusJakartaSans',
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF0F172A),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -81,9 +79,9 @@ class PopularServiceCard extends ConsumerWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color(0xFF006065),
+                        color: Theme.of(context).colorScheme.primary,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
@@ -103,11 +101,11 @@ class PopularServiceCard extends ConsumerWidget {
                       children: [
                         TextSpan(
                           text: "${service.price ?? 0}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'PlusJakartaSans',
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF006065),
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         TextSpan(
